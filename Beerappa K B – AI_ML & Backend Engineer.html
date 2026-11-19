@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beerappa K B – AI/ML &amp; Backend Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e8edf5; --paper:#f6f8fc; --ink:#17233f; --mute:#5b6784; --line:#c9d2e4; --acc:#1e4fc2; --acc2:#1e5bd8; --soft:#dbe3f1;
+  --disp:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif; --body:"Source Serif 4",Georgia,serif;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#121a30; --paper:#19223c; --ink:#e7ecf8; --mute:#93a0c2; --line:#2e3b60; --acc:#7aa7ff; --acc2:#7aa7ff; --soft:#222d4d; color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#121a30; --paper:#19223c; --ink:#e7ecf8; --mute:#93a0c2; --line:#2e3b60; --acc:#7aa7ff; --acc2:#7aa7ff; --soft:#222d4d; color-scheme:dark}
+html{height:auto;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 var(--body)}
+main{max-width:980px;margin:0 auto;padding:48px 22px 80px}
+h1,h2,h3{font-family:var(--disp);line-height:1.05;margin:0}
+h1{font-size:clamp(44px,9vw,96px);font-weight:800;letter-spacing:-.03em}
+h2{font-size:clamp(26px,4vw,38px);font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+a{color:var(--acc2)}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--disp);font-size:15px;color:var(--mute);margin-bottom:56px}
+.top button{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.role{font-family:var(--disp);font-size:clamp(18px,2.6vw,24px);color:var(--mute);margin:18px 0 0;max-width:30ch}
+.lede{max-width:60ch;margin:22px 0 0;font-size:20px}
+
+/* console */
+.console{margin-top:44px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px}
+.console h2{font-size:24px}
+.console p.sub{margin:0 0 14px;color:var(--mute);font-size:16px}
+.ask{display:flex;gap:10px;flex-wrap:wrap}
+.ask input{flex:1 1 240px;font:17px var(--body);padding:12px 14px;border:1.5px solid var(--ink);border-radius:8px;background:var(--bg);color:var(--ink)}
+.ask button,.chips button{font-family:var(--disp);font-weight:700;font-size:15px;cursor:pointer;border-radius:8px}
+.ask button{background:var(--ink);color:var(--paper);border:0;padding:12px 20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.chips button{background:transparent;color:var(--ink);border:1.5px dashed var(--mute);padding:6px 12px;font-weight:600}
+.chips button:hover{border-style:solid;border-color:var(--acc);color:var(--acc)}
+.out{margin-top:18px;min-height:20px}
+.answer{font-size:19px;border-left:4px solid var(--acc);padding:2px 0 2px 14px;margin:0 0 14px}
+.chunk{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:start;padding:10px 0;border-top:1px solid var(--line);font-size:15px;color:var(--mute)}
+.bar{height:8px;background:var(--soft);border-radius:4px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--acc2);width:0;transition:width .5s}
+.chunk b{font-family:var(--disp);color:var(--ink);font-size:14px}
+
+section{margin-top:84px}
+.sub2{color:var(--mute);margin:0 0 26px;max-width:58ch}
+
+/* pipelines */
+.proj{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:22px}
+.proj header{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.proj h3{font-size:26px}
+.when{font-family:var(--disp);color:var(--mute);font-size:15px}
+.proj p{margin:10px 0 18px;max-width:62ch}
+.flow{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding:4px 2px 10px}
+.node{flex:0 0 auto;font-family:var(--disp);font-size:14px;font-weight:600;background:var(--bg);border:1.5px solid var(--ink);border-radius:8px;padding:8px 12px;white-space:nowrap}
+.node.hot{background:var(--acc);border-color:var(--acc);color:#fff}
+:root[data-theme="dark"] .node.hot{color:#1b1020}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .node.hot{color:#1b1020}}
+.link{flex:0 0 28px;align-self:center;height:2px;background:var(--ink);position:relative}
+.link::after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:8px solid var(--ink);border-right:0}
+.tech{margin-top:10px;font-family:var(--disp);font-size:14px;color:var(--mute)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.sk{border-top:3px solid var(--ink);padding-top:10px}
+.sk h3{font-size:19px;margin-bottom:10px}
+.sk span{display:inline-block;margin:0 6px 6px 0;padding:3px 10px;border:1.5px solid var(--line);border-radius:999px;font-family:var(--disp);font-size:14px;background:var(--paper)}
+.sk span.k{border-color:var(--acc);color:var(--acc)}
+
+.contact a{font-family:var(--disp);font-weight:700;font-size:clamp(20px,3.5vw,28px);word-break:break-all}
+.contact p{margin:6px 0 0}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><span>Mysore, India</span><button id="theme" aria-label="Switch light or dark theme">Switch theme</button></div>
+
+  <h1>Beerappa K B</h1>
+  <p class="role">Builds AI features and the APIs that serve them.</p>
+  <p class="lede">I’m a computer science graduate who works across the whole workflow: cleaning data, training models, and putting them behind REST APIs that other people can use. I like Python, machine learning and Generative AI.</p>
+
+  <div class="console">
+    <h2>Ask about my work</h2>
+    <p class="sub">Answers are retrieved from my resume, and the matching passages are shown with each answer.</p>
+    <form class="ask" id="f" onsubmit="return false">
+      <input id="q" type="text" placeholder="Try: Which projects use LangChain?" aria-label="Ask a question about Beerappa">
+      <button id="go" type="submit">Search</button>
+    </form>
+    <div class="chips" id="chips"></div>
+    <div class="out" id="out" aria-live="polite"></div>
+  </div>
+
+  <section>
+    <h2>Projects</h2>
+    <p class="sub2">Each project is shown as the path data takes through it, with the AI or ML step highlighted.</p>
+
+    <article class="proj">
+      <header><h3>Enterprise Multi-Agent AI System</h3><span class="when">June 2026</span></header>
+      <p>AI agents built with LLMs and LangChain that use retrieval and prompt engineering to improve the quality of workflow outputs. The Generative AI features are exposed through REST APIs and deployed on AWS.</p>
+      <div class="flow" role="img" aria-label="Request goes to FastAPI, then LangChain agents with RAG, then PostgreSQL and Redis, then Docker on AWS">
+        <div class="node">Request</div><div class="link"></div><div class="node">FastAPI</div><div class="link"></div><div class="node hot">LangChain agents + RAG</div><div class="link"></div><div class="node">PostgreSQL / Redis</div><div class="link"></div><div class="node">Docker → AWS</div>
+      </div>
+      <div class="tech">Python, FastAPI, LangChain, Azure OpenAI, PostgreSQL, Redis, Docker, AWS</div>
+    </article>
+
+    <article class="proj">
+      <header><h3>LIMS: Laboratory Information Management System</h3><span class="when">September 2026</span></header>
+      <p>An ML model that flags outliers in lab records and attaches a confidence score to each one, backed by a REST API layer shipped through CI/CD. I also fixed production bugs and cut load time.</p>
+      <div class="flow" role="img" aria-label="Lab records go to data cleaning, then Scikit-learn outlier model with confidence scores, then Flask REST API with JWT, then CI/CD">
+        <div class="node">Lab records</div><div class="link"></div><div class="node">Clean + validate</div><div class="link"></div><div class="node hot">Outlier model + confidence</div><div class="link"></div><div class="node">Flask API + JWT</div><div class="link"></div><div class="node">CI/CD</div>
+      </div>
+      <div class="tech">Python, Flask, PostgreSQL, MongoDB, Scikit-learn, JWT, CI/CD</div>
+    </article>
+
+    <article class="proj">
+      <header><h3>Multiple Disease Prediction System</h3><span class="when">August 2026</span></header>
+      <p>Models for heart disease, diabetes and Parkinson’s, tuned to improve accuracy and served as REST APIs for live predictions. OpenCV prepares the image data.</p>
+      <div class="flow" role="img" aria-label="Input data goes to OpenCV preprocessing, then TensorFlow and Scikit-learn models, then Flask REST API for live predictions">
+        <div class="node">Patient / image data</div><div class="link"></div><div class="node">OpenCV prep</div><div class="link"></div><div class="node hot">TensorFlow + Scikit-learn</div><div class="link"></div><div class="node">Flask API</div><div class="link"></div><div class="node">Live prediction</div>
+      </div>
+      <div class="tech">Python, Flask, TensorFlow, Keras, OpenCV, Scikit-learn</div>
+    </article>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="sk"><h3>Generative AI</h3><span class="k">LLMs</span><span class="k">LangChain</span><span class="k">RAG</span><span>NLP</span></div>
+      <div class="sk"><h3>Machine learning</h3><span class="k">Scikit-learn</span><span>TensorFlow</span><span>Keras</span><span>PyTorch</span><span>Model training</span><span>Model tuning</span><span>Feature engineering</span></div>
+      <div class="sk"><h3>APIs and backend</h3><span class="k">REST APIs</span><span class="k">FastAPI</span><span class="k">Flask</span></div>
+      <div class="sk"><h3>Python and data</h3><span class="k">Python</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span><span>EDA</span><span>Data cleaning</span></div>
+      <div class="sk"><h3>Databases</h3><span>SQL</span><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span></div>
+      <div class="sk"><h3>Cloud and delivery</h3><span>AWS</span><span>Docker</span><span>Git</span><span>CI/CD</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <p class="sub2">BE in Computer Science and Engineering, JSS Science and Technology University, Mysore (2025).<br>Certifications: Full Stack Web Development (Udemy), Data Analyst (Excerpt Technologies), Data Analytics Simulation (Deloitte).</p>
+  </section>
+
+  <section class="contact">
+    <h2>Contact</h2>
+    <a href="mailto:beerappakbb05@gmail.com">beerappakbb05@gmail.com</a>
+    <p><a href="tel:+916362612931">+91 63626 12931</a></p>
+  </section>
+
+</main>
+
+<script>
+const DOCS=[
+ {t:"Summary",x:"Computer Science graduate with a strong foundation in Python, machine learning and Generative AI. Works across the full workflow, from data cleaning and analysis to model training and serving models through REST APIs.",k:"about summary who background python machine learning generative ai graduate workflow"},
+ {t:"Generative AI",x:"Hands-on with LLMs, LangChain, RAG and NLP. Built AI agents that use retrieval and prompt engineering to improve output quality.",k:"generative ai llm llms langchain rag nlp prompt engineering agents genai"},
+ {t:"Machine learning",x:"Works with Scikit-learn, TensorFlow, Keras and PyTorch, covering model training, model tuning and feature engineering.",k:"machine learning deep learning scikit-learn sklearn tensorflow keras pytorch training tuning feature engineering ml dl models"},
+ {t:"APIs and backend",x:"Builds REST APIs with Flask and FastAPI and deploys them with CI/CD, backed by PostgreSQL, MongoDB and Redis.",k:"api apis rest flask fastapi backend postgresql mongodb redis database sql"},
+ {t:"Cloud",x:"Uses AWS, Docker, Git and CI/CD to ship and deploy projects.",k:"cloud aws docker git ci cd deploy deployment devops"},
+ {t:"Enterprise Multi-Agent AI System",x:"Built AI agents with LLMs and LangChain using RAG and prompt engineering. Generative AI features are served through REST APIs, with PostgreSQL and Redis pipelines, deployed on AWS using Docker and CI/CD. Stack: Python, FastAPI, LangChain, Azure OpenAI.",k:"enterprise multi agent multi-agent ai system project langchain rag fastapi azure openai redis aws docker llm agents"},
+ {t:"LIMS",x:"A Laboratory Information Management System with an ML model (Scikit-learn) that finds outliers and gives confidence scores. Includes REST APIs deployed with CI/CD, production bug fixes and faster load times. Stack: Flask, PostgreSQL, MongoDB, JWT.",k:"lims laboratory information management system project outlier outliers confidence scikit-learn flask jwt mongodb lab records"},
+ {t:"Multiple Disease Prediction System",x:"Trained models for heart disease, diabetes and Parkinson’s with TensorFlow and Scikit-learn, tuned for accuracy. OpenCV prepares image data, and all models are served as REST APIs for live predictions.",k:"multiple disease prediction system project heart diabetes parkinson parkinsons tensorflow keras opencv image health"},
+ {t:"Education and certifications",x:"BE in Computer Science and Engineering from JSS Science and Technology University, Mysore (2025). Certifications: Full Stack Web Development (Udemy), Data Analyst (Excerpt Technologies), Data Analytics Simulation (Deloitte).",k:"education degree college university jss mysore be cse certification certifications udemy deloitte excerpt graduated"},
+ {t:"Problem solving",x:"Practises data structures and algorithms regularly on LeetCode.",k:"leetcode dsa data structures algorithms problem solving coding"},
+ {t:"Contact",x:"Email beerappakbb05@gmail.com or call +91 63626 12931.",k:"contact email phone hire reach call mail"}
+];
+const STOP=new Set("a an the is are of and or to in on for with what which do does did how me my you your i about tell use uses used by from".split(" "));
+const tok=s=>s.toLowerCase().replace(/[^a-z0-9+\-\s]/g," ").split(/\s+/).filter(w=>w&&!STOP.has(w));
+DOCS.forEach(d=>{d.tok=tok(d.t+" "+d.k+" "+d.x)});
+function rank(q){
+  const qt=tok(q); if(!qt.length) return [];
+  return DOCS.map(d=>{
+    let s=0;
+    qt.forEach(w=>{
+      if(d.tok.includes(w)) s+=1;
+      else if(w.length>3&&d.tok.some(t=>t.startsWith(w)||w.startsWith(t)&&t.length>3)) s+=.5;
+      if(tok(d.t).includes(w)) s+=1;
+    });
+    return {d,s:s/(qt.length*1.6)};
+  }).filter(r=>r.s>0).sort((a,b)=>b.s-a.s).slice(0,3);
+}
+const out=document.getElementById("out"),q=document.getElementById("q");
+function ask(text){
+  const r=rank(text);
+  out.textContent="";
+  if(!r.length){
+    const p=document.createElement("p");p.className="answer";
+    p.textContent="No passage matched that. Try a skill, a project name, or words like education, contact or LangChain.";
+    out.appendChild(p);return;
+  }
+  const a=document.createElement("p");a.className="answer";a.textContent=r[0].d.x;out.appendChild(a);
+  const mx=r[0].s;
+  r.forEach(x=>{
+    const c=document.createElement("div");c.className="chunk";
+    const l=document.createElement("div");
+    const b=document.createElement("b");b.textContent="Match "+Math.min(100,Math.round(x.s/Math.max(mx,.01)*(Math.min(1,x.s+.35))*100))+"%";
+    const bar=document.createElement("div");bar.className="bar";const i=document.createElement("i");bar.appendChild(i);
+    l.appendChild(b);l.appendChild(bar);
+    const t=document.createElement("div");t.textContent=x.d.t+": "+x.d.x;
+    c.appendChild(l);c.appendChild(t);out.appendChild(c);
+    requestAnimationFrame(()=>{i.style.width=Math.min(100,Math.round(x.s/mx*100))+"%"});
+  });
+}
+document.getElementById("f").addEventListener("submit",()=>ask(q.value));
+const chips=document.getElementById("chips");
+["Which projects use LangChain?","What ML frameworks do you know?","Have you deployed to AWS?","Tell me about LIMS","Education and certifications"].forEach(s=>{
+  const b=document.createElement("button");b.type="button";b.textContent=s;
+  b.onclick=()=>{q.value=s;ask(s)};chips.appendChild(b);
+});
+const root=document.documentElement;
+document.getElementById("theme").onclick=()=>{
+  const dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme=dark?"light":"dark";
+};
+</script>
+</body>
+</html>
